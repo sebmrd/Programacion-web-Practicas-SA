@@ -1,0 +1,232 @@
+/* =========================
+   1. RESET BÁSICO Y VARIABLES
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #e2e8f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* =========================
+   2. DISEÑO PRINCIPAL (LAYOUT)
+========================= */
+.page {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Contenedores con gradiente suave */
+.container {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2 {
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5rem;
+}
+
+/* =========================
+   3. BOTONES Y FORMULARIOS
+========================= */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+/* Efecto Hover */
+button:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.4);
+}
+
+/* Estado Deshabilitado */
+button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #475569;
+}
+
+.form-group input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 200px;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* =========================
+   4. LOGS ESTILO TERMINAL
+========================= */
+.log {
+  background-color: #1e293b;
+  color: #f8fafc;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  padding: 1rem;
+  border-radius: 8px;
+  height: 250px;
+  overflow-y: auto;
+  border: 1px solid #0f172a;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Scrollbar personalizado para el log */
+.log::-webkit-scrollbar {
+  width: 8px;
+}
+.log::-webkit-scrollbar-track {
+  background: #0f172a;
+  border-radius: 4px;
+}
+.log::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+/* Colores según tipo de log (conectados al JS) */
+.log-item {
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+.log-info { color: #38bdf8; }    /* Azul claro */
+.log-success { color: #4ade80; } /* Verde */
+.log-error { color: #f87171; }   /* Rojo */
+.log-warning { color: #facc15; } /* Amarillo */
+
+/* Caja de Resultados de la Comparativa */
+.resultados {
+  display: none;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: #f0fdf4;
+  border-left: 5px solid #22c55e;
+  border-radius: 6px;
+  color: #166534;
+}
+
+.resultados.visible {
+  display: block;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.resultados h3 {
+  margin-bottom: 1rem;
+  color: #15803d;
+  border-bottom: none;
+}
+
+.resultados p {
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* =========================
+   5. TEMPORIZADOR Y BARRAS
+========================= */
+/* Display grande */
+.display {
+  font-size: 5rem;
+  font-weight: 800;
+  text-align: center;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+  margin: 1rem 0;
+  transition: color 0.3s ease;
+}
+
+/* Contenedor de la barra */
+.progress-container {
+  width: 100%;
+  height: 24px;
+  background-color: #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Barra de progreso animada con gradiente */
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
+  border-radius: 12px;
+  /* Transición lineal para que el movimiento de los segundos se vea fluido */
+  transition: width 1s linear, background 0.3s ease;
+}
+
+/* =========================
+   6. ANIMACIONES Y ALERTAS
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseAlert {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Clases dinámicas aplicadas por JS al llegar a <= 10s */
+.display.alerta {
+  color: #ef4444;
+  animation: pulseAlert 1s infinite ease-in-out;
+}
+
+.progress-bar.alerta {
+  background: linear-gradient(90deg, #ef4444 0%, #f97316 100%);
+}
