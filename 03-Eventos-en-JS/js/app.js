@@ -1,8 +1,5 @@
 'use strict';
 
-/* =========================
-   FORMULARIO
-========================= */
 const formulario = document.querySelector('#formulario');
 const inputNombre = document.querySelector('#nombre');
 const inputEmail = document.querySelector('#email');
@@ -12,7 +9,7 @@ const charCount = document.querySelector('#chars');
 const resultado = document.querySelector('#resultado');
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// 4.2 Función de validación base
+
 function validarCampo(input, esValido, errorId) {
   const errorMsg = document.getElementById(errorId);
 
@@ -27,7 +24,7 @@ function validarCampo(input, esValido, errorId) {
   return esValido;
 }
 
-// 4.3 Funciones validadoras
+
 function validarNombre() {
   return validarCampo(
     inputNombre,
@@ -60,7 +57,7 @@ function validarMensaje() {
   );
 }
 
-// 4.4 Contador de caracteres completado
+
 function actualizarContador(e) {
   const longitud = e.target.value.length;
   charCount.textContent = longitud;
@@ -69,25 +66,25 @@ function actualizarContador(e) {
 
 textMensaje.addEventListener('input', actualizarContador);
 
-// 4.5 Eventos blur para validar completado
+
 inputNombre.addEventListener('blur', validarNombre);
 inputEmail.addEventListener('blur', validarEmail);
 selectAsunto.addEventListener('blur', validarAsunto);
 textMensaje.addEventListener('blur', validarMensaje);
 
-// 5.1 Función para limpiar errores
+
 function limpiarError(input, errorId) {
   input.classList.remove('error');
   document.getElementById(errorId).classList.remove('visible');
 }
 
-// 5.2 Eventos input para limpiar errores completado
+
 inputNombre.addEventListener('input', () => limpiarError(inputNombre, 'error-nombre'));
 inputEmail.addEventListener('input', () => limpiarError(inputEmail, 'error-email'));
 selectAsunto.addEventListener('change', () => limpiarError(selectAsunto, 'error-asunto'));
 textMensaje.addEventListener('input', () => limpiarError(textMensaje, 'error-mensaje'));
 
-// 5.3 Función para mostrar resultado
+
 function mostrarResultado() {
   resultado.innerHTML = '';
 
@@ -115,7 +112,7 @@ function mostrarResultado() {
   resultado.classList.add('visible');
 }
 
-// 5.4 Función para resetear formulario
+
 function resetearFormulario() {
   formulario.reset();
   charCount.textContent = '0';
@@ -130,7 +127,6 @@ function resetearFormulario() {
   });
 }
 
-// 5.5 Evento submit del formulario completado
 formulario.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -160,9 +156,7 @@ formulario.addEventListener('submit', (e) => {
   textMensaje.focus();
 });
 
-/* =========================
-   ATAJO DE TECLADO (Paso 6 completado)
-========================= */
+
 document.addEventListener('keydown', (e) => {
   if (e.ctrlKey && e.key === 'Enter') {
     e.preventDefault();
@@ -170,9 +164,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-/* =========================
-   TAREAS CON DELEGACIÓN (Paso 7 completado)
-========================= */
 const inputNuevaTarea = document.querySelector('#nueva-tarea');
 const btnAgregar = document.querySelector('#btn-agregar');
 const listaTareas = document.querySelector('#lista-tareas');
@@ -184,7 +175,7 @@ let tareas = [
   { id: 3, texto: 'Subir al repositorio', completada: true }
 ];
 
-// 7.2 Funciones helper para crear elementos
+
 function crearBotonEliminar() {
   const boton = document.createElement('button');
   boton.type = 'button';
@@ -216,13 +207,13 @@ function crearItemTarea(tarea) {
   return li;
 }
 
-// 7.3 Función para actualizar contador
+
 function actualizarContadorTareas() {
   const pendientes = tareas.filter((tarea) => !tarea.completada).length;
   contadorTareas.textContent = `${pendientes} pendiente(s)`;
 }
 
-// 7.4 Función renderizar completada
+
 function renderizarTareas() {
   listaTareas.innerHTML = '';
 
@@ -243,7 +234,6 @@ function renderizarTareas() {
   actualizarContadorTareas();
 }
 
-// 7.5 Función agregar tarea completada
 function agregarTarea() {
   const texto = inputNuevaTarea.value.trim();
 
@@ -263,7 +253,7 @@ function agregarTarea() {
   inputNuevaTarea.focus();
 }
 
-// 7.6 Eventos del botón y Enter completado
+
 btnAgregar.addEventListener('click', agregarTarea);
 
 inputNuevaTarea.addEventListener('keydown', (e) => {
@@ -273,7 +263,7 @@ inputNuevaTarea.addEventListener('keydown', (e) => {
   }
 });
 
-// 7.7 Event delegation completado
+
 listaTareas.addEventListener('click', (e) => {
   const action = e.target.dataset.action;
 
@@ -303,5 +293,4 @@ listaTareas.addEventListener('click', (e) => {
   }
 });
 
-// 7.8 Renderizado inicial
 renderizarTareas();

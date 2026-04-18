@@ -23,14 +23,14 @@ const getsaludo2 = (nombre, hora) => {
     return hora < 12 ? `Buenos días, ${nombre}` : hora < 18 ? `Buenas tardes, ${nombre}`: `Buenas noches, ${nombre}`;
 };
 
-// Información del estudiante
+
 const estudiante = {
   nombre: 'Sebastián Alvarado',
   carrera: 'Ingeniería de Sistemas',
   semestre: 5
 };
 
-// Lista de elementos (elegir un dominio: tareas, productos, películas, etc.)
+
 const elementos = [
   { id: 1, titulo: 'Proyecto Web', descripcion: 'Terminar práctica JS', categoria: 'Estudio', prioridad: 'Alta', activo: true },
   { id: 2, titulo: 'Comprar comida', descripcion: 'Ir al supermercado', categoria: 'Personal', prioridad: 'Media', activo: true },
@@ -96,7 +96,7 @@ function renderizarLista(datos) {
 
     card.appendChild(titulo);
     card.appendChild(descripcion);
-    // CONTENEDOR DE BADGES
+    
     const badges = document.createElement('div');
     badges.classList.add('badges');
 
@@ -104,12 +104,12 @@ function renderizarLista(datos) {
     badges.appendChild(prioridad);
     badges.appendChild(estado);
 
-    // ACCIONES
+    
     const acciones = document.createElement('div');
     acciones.classList.add('card-actions');
     acciones.appendChild(btnEliminar);
 
-    // ENSAMBLE FINAL
+    
     card.appendChild(titulo);
     card.appendChild(descripcion);
     card.appendChild(badges);
@@ -159,7 +159,7 @@ function inicializarFiltros() {
   });
 };
 
-// Inicializar aplicación
+
 mostrarInfoEstudiante();
 renderizarLista(elementos);
 inicializarFiltros();
