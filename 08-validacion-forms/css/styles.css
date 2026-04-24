@@ -1,0 +1,36 @@
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+
+body { background-color: #f4f4f9; display: flex; justify-content: center; padding: 20px; }
+
+.contenedor { background: white; padding: 20px; border-radius: 8px; width: 100%; max-width: 400px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+.form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+
+.checkbox-group { flex-direction: row; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+label { font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+
+input, select { padding: 8px; border: 1px solid #ccc; border-radius: 4px; outline: none; }
+
+/* Feedback visual */
+input.valido, select.valido { border: 2px solid #2ecc71; }
+input.invalido, select.invalido { border: 2px solid #e74c3c; }
+
+/* Mensajes de error */
+.error-msg { color: #e74c3c; font-size: 12px; margin-top: 5px; display: none; }
+.error-msg.visible { display: block; }
+
+/* Fuerza de contraseña */
+#indicador-fuerza { font-size: 12px; font-weight: bold; margin-top: 3px; }
+
+button {
+    background-color: #3498db; color: white; border: none; padding: 10px;
+    border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px;
+    margin-top: 10px;
+}
+
+button:disabled { background-color: #95a5a6; cursor: not-allowed; }
+
+#mensajeGlobal { margin-top: 15px; text-align: center; font-weight: bold; padding: 10px; border-radius: 4px; display: none; }
+.exito { background-color: #d4edda; color: #155724; }
+.error-global { background-color: #f8d7da; color: #721c24; }
